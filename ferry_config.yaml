@@ -1,0 +1,4 @@
+schema: lib/schema.graphql
+queries_glob: lib/src/features/**/*.graphql
+type_overrides:
+  DateTime: DateTime

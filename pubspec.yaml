@@ -12,9 +12,10 @@ dependencies:
   flutter_bloc:
   shared_preferences:
   ferry:
-  gql_http_link:
-  gql_code_builder_serializers:
   ferry_flutter:
+  gql_http_link:
+  built_value:
+  built_collection:
   get_it:
 
 dev_dependencies:
@@ -23,5 +24,6 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   ferry_generator:
   build_runner:
+  built_value_generator:
 flutter:
   uses-material-design: true

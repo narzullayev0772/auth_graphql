@@ -1,3 +1,4 @@
+import 'package:auth_graphql/src/features/auth/presentation/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatelessWidget {
@@ -6,8 +7,9 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      title: 'Auth Graphql',
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+      home: const AuthPage(),
     );
   }
 }

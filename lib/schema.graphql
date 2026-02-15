@@ -1,0 +1,7 @@
+type Query {
+  anonymousToken: TokenResponse
+}
+type TokenResponse {
+  refreshToken: String!
+  token: String!
+}
