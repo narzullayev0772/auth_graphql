@@ -4,6 +4,8 @@ import 'package:auth_graphql/src/features/auth/data/repositories/auth_repository
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/constants.dart';
+
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
@@ -45,9 +47,6 @@ class AuthPage extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 20),
-            Expanded(
-              child: _FerryOperationExample(),
-            ),
           ],
         ),
       ),
@@ -55,53 +54,4 @@ class AuthPage extends StatelessWidget {
   }
 }
 
-class _FerryOperationExample extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final request = GAnonymousTokenReq();
-
-    return Operation(
-      client: locator.get(instanceName: 'authService'),
-      operationRequest: request,
-      builder: (context, response, error) {
-        if (response == null || response.loading) {
-          return const CircularProgressIndicator();
-        }
-
-        if (response.hasErrors) {
-          return Text(
-            'Error: ${response.graphqlErrors?.map((e) => e.message).join(', ')}',
-            style: const TextStyle(color: Colors.red),
-          );
-        }
-
-        final data = response.data;
-        if (data?.anonymousToken == null) {
-          return const Text('No data available');
-        }
-
-        return Card(
-          margin: const EdgeInsets.all(16),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Anonymous Token Response:',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                Text('Token: ${data!.anonymousToken!.token}'),
-                const SizedBox(height: 5),
-                Text('Refresh Token: ${data.anonymousToken!.refreshToken}'),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
 
